@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://ck8ceypidusnl"]
+[gd_scene load_steps=8 format=4 uid="uid://ck8ceypidusnl"]
 
 [ext_resource type="Texture2D" uid="uid://dwqgugljqqssb" path="res://images/Tile set.png" id="1_j0w1a"]
 [ext_resource type="Texture2D" uid="uid://dewodrpax8qrt" path="res://images/Tile set(1).png" id="2_bm3sv"]
@@ -586,7 +586,7 @@ terrain_set_0/mode = 0
 sources/0 = SubResource("TileSetAtlasSource_mq2kn")
 sources/1 = SubResource("TileSetAtlasSource_ayn23")
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="divingMap" type="TileMapLayer" parent="."]
 scale = Vector2(1.8, 1.8)

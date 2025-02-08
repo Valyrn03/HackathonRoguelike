@@ -23,67 +23,80 @@ public partial class Player : CharacterBody2D
 		playerAnimation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		playerAnimation.Play("idle");
 	}
+
+	public override void _Process(double delta)
+	{
+		// put a box for each thing collected 
+		for (int i = 0; i < tools.Count; i++)
+		{
+			Sprite2D box = new Sprite2D();
+			box.Texture = GD.Load<Texture2D>("res://images/openBox.png");
+			box.Position = new Vector2(50 + i * 50, -20);
+			box.Scale = new Vector2(0.05f, 0.05f);
+			AddChild(box);
+		}
+	}
 	public override void _PhysicsProcess(double delta)
 {
-    Vector2 direction = Vector2.Zero;
+	Vector2 direction = Vector2.Zero;
 
-    // Apply gravity if not on the floor and not swimming
-    if (!IsOnFloor() && !inWater)
-    {
-        Velocity += new Vector2(0, Gravity * (float)delta);
-    }
+	// Apply gravity if not on the floor and not swimming
+	if (!IsOnFloor() && !inWater)
+	{
+		Velocity += new Vector2(0, Gravity * (float)delta);
+	}
 
-    // Handle horizontal movement (left-right)
-    if (Input.IsActionPressed("move_left"))
-    {
-        direction.X -= 1;
-        playerAnimation.Play("walk");
-        playerAnimation.FlipH = true; // Flip sprite when moving left
-    }
-    else if (Input.IsActionPressed("move_right"))
-    {
-        direction.X += 1;
-        playerAnimation.Play("walk");
-        playerAnimation.FlipH = false; // Unflip sprite when moving right
-    }
-    else
-    {
-        playerAnimation.Play("idle");
-    }
+	// Handle horizontal movement (left-right)
+	if (Input.IsActionPressed("move_left"))
+	{
+		direction.X -= 1;
+		playerAnimation.Play("walk");
+		playerAnimation.FlipH = true; // Flip sprite when moving left
+	}
+	else if (Input.IsActionPressed("move_right"))
+	{
+		direction.X += 1;
+		playerAnimation.Play("walk");
+		playerAnimation.FlipH = false; // Unflip sprite when moving right
+	}
+	else
+	{
+		playerAnimation.Play("idle");
+	}
 
-    // Swimming vertical movement (up-down)
-    if (inWater)
-    {
-        if (Input.IsActionPressed("move_up"))
-        {
-            direction.Y -= 1;
-            playerAnimation.Play("swim");
-        }
-        else if (Input.IsActionPressed("move_down"))
-        {
-            direction.Y += 1;
-            playerAnimation.Play("swim");
-        }
-        else
-        {
-            direction.Y = 0;
-            playerAnimation.Play("idle");
-        }
-    }
+	// Swimming vertical movement (up-down)
+	if (inWater)
+	{
+		if (Input.IsActionPressed("move_up"))
+		{
+			direction.Y -= 1;
+			playerAnimation.Play("swim");
+		}
+		else if (Input.IsActionPressed("move_down"))
+		{
+			direction.Y += 1;
+			playerAnimation.Play("swim");
+		}
+		else
+		{
+			direction.Y = 0;
+			playerAnimation.Play("idle");
+		}
+	}
 
-    // Normalize direction vector (same behavior for both axes)
-    direction = direction.Normalized();
+	// Normalize direction vector (same behavior for both axes)
+	direction = direction.Normalized();
 
-    // Apply velocity based on direction and speed
-    Velocity = new Vector2(direction.X * Speed, direction.Y * Speed / 20 + Velocity.Y);
+	// Apply velocity based on direction and speed
+	Velocity = new Vector2(direction.X * Speed, direction.Y * Speed / 20 + Velocity.Y);
 
-    // Jumping logic (reset Y velocity when jumping)
-    if (Input.IsActionJustPressed("move_up") && IsOnFloor())
-    {
-        Velocity = new Vector2(Velocity.X, -JumpForce); // Apply jump force
-    }
+	// Jumping logic (reset Y velocity when jumping)
+	if (Input.IsActionJustPressed("move_up") && IsOnFloor())
+	{
+		Velocity = new Vector2(Velocity.X, -JumpForce); // Apply jump force
+	}
 
-    MoveAndSlide();
+	MoveAndSlide();
 }
 
 
@@ -121,6 +134,7 @@ public void PickUpTool(Tool tool)
 		{
 			Tool t = tools[0] ;
 			tools.RemoveAt(0); // Remove the first tool
+			CharacterData.tools = tools;
 			return t;
 		}
 		return null;
