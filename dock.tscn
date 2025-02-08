@@ -91,6 +91,7 @@ radius = 49.0
 height = 200.0
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(109, 38)
 
 [node name="Ocean Obj" type="StaticBody2D" parent="."]
 position = Vector2(594, 116)
