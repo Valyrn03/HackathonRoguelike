@@ -22,6 +22,8 @@ public partial class Player : CharacterBody2D
 		tools = CharacterData.tools;
 		inWater = CharacterData.inWater;
 		boxes  = CharacterData.boxes;
+		GD.Print("Player has " + tools.Count + " tools");
+		GD.Print(boxes.Count);
 
 		playerAnimation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		playerAnimation.Play("idle");
