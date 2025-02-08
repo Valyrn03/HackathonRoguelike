@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dihgugakuahyh"
-path="res://.godot/imported/graySailButton.png-91bd5a0d3eb1f1f3c3bfa666766d13be.ctex"
+path="res://.godot/imported/graySailButton.png-cde0d5fb4ea34fe6affdb7f6dc7bb3c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graySailButton.png"
-dest_files=["res://.godot/imported/graySailButton.png-91bd5a0d3eb1f1f3c3bfa666766d13be.ctex"]
+source_file="res://buttons/graySailButton.png"
+dest_files=["res://.godot/imported/graySailButton.png-cde0d5fb4ea34fe6affdb7f6dc7bb3c3.ctex"]
 
 [params]
 

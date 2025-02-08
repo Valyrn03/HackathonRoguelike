@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqyk1mf4a4e44"]
+[gd_scene load_steps=5 format=3 uid="uid://co5buck2pjs78"]
 
-[ext_resource type="Texture2D" uid="uid://cihrrhwclbjdn" path="res://buttons/intro.png" id="1_chk1l"]
-[ext_resource type="Texture2D" uid="uid://bkxvsym2yfp61" path="res://images/title.png" id="2_ofrd3"]
-[ext_resource type="Script" path="res://scripts/loadDockScene.cs" id="3_q6so6"]
-[ext_resource type="Texture2D" uid="uid://uc530n76amd2" path="res://buttons/playbutton.png" id="4_lou2i"]
+[ext_resource type="Texture2D" path="res://intro.png" id="1_chk1l"]
+[ext_resource type="Texture2D" path="res://title.png" id="2_ofrd3"]
+[ext_resource type="Script" path="res://loadDockScene.cs" id="3_q6so6"]
+[ext_resource type="Texture2D" path="res://playbutton.png" id="4_lou2i"]
 
 [node name="Node2D" type="Node2D"]
 
