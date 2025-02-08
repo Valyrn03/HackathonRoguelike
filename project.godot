@@ -11,9 +11,20 @@ config_version=5
 [application]
 
 config/name="New Game Project"
-run/main_scene="res://scenes/dock.tscn"
+run/main_scene="res://scenes/introscene.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+CharacterData="*res://scripts/CharacterData.cs"
+
+[display]
+
+window/size/viewport_width=1200
+window/size/viewport_height=900
+window/size/resizable=false
+window/size/borderless=true
 
 [dotnet]
 

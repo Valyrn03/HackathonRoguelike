@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://cd32js1sbe5lc"]
+
+[ext_resource type="Script" path="res://scripts/Player.cs" id="1_b448p"]
+[ext_resource type="Texture2D" uid="uid://c63lmml6fuvnh" path="res://sprites/crabbot/crabbot_idle1.png" id="2_ymfkc"]
+[ext_resource type="Texture2D" uid="uid://boy33ujfgqo4f" path="res://sprites/crabbot/crabbot_idle2.png" id="3_47f88"]
+[ext_resource type="Texture2D" uid="uid://b5l6a2ihp6cor" path="res://sprites/crabbot/crabbot_idleOpen1.png" id="4_mr187"]
+[ext_resource type="Texture2D" uid="uid://b51sstj8e52sa" path="res://sprites/crabbot/crabbot_idleOpen2.png" id="5_odjq7"]
+[ext_resource type="Texture2D" uid="uid://c1ltwejpq7qgn" path="res://sprites/crabbot/crabbot_swim1.png" id="6_qft8x"]
+[ext_resource type="Texture2D" uid="uid://cprfp80pvskcg" path="res://sprites/crabbot/crabbot_swim2.png" id="7_5orjj"]
+[ext_resource type="Texture2D" uid="uid://b0ya8hdes21a1" path="res://sprites/crabbot/crabbot_swim3.png" id="8_3cu41"]
+[ext_resource type="Texture2D" uid="uid://cmqtivvpam4gs" path="res://sprites/crabbot/crabbot_walk1.png" id="9_215e1"]
+[ext_resource type="Texture2D" uid="uid://dxo6h5ii37o5j" path="res://sprites/crabbot/crabbot_walk2.png" id="10_jyboe"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ig0r0"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ymfkc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_47f88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mr187")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_odjq7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_qft8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5orjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3cu41")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_215e1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jyboe")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_b448p")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-105, -170)
+polygon = PackedVector2Array(114, 341, 379, 340, 372, 239, 275, 179, 200, 177, 109, 244)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(133, 99)
+scale = Vector2(0.250977, 0.250977)
+sprite_frames = SubResource("SpriteFrames_ig0r0")
+animation = &"swim"
+autoplay = "idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-105, -170)
+limit_left = 0
+limit_top = 0
+position_smoothing_enabled = true

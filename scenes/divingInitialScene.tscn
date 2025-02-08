@@ -1,17 +1,33 @@
-[gd_scene load_steps=16 format=4 uid="uid://ck8ceypidusnl"]
+[gd_scene load_steps=10 format=4 uid="uid://ck8ceypidusnl"]
 
 [ext_resource type="Texture2D" uid="uid://dwqgugljqqssb" path="res://images/Tile set.png" id="1_j0w1a"]
 [ext_resource type="Script" path="res://scripts/divingMap.cs" id="2_jv2e4"]
-[ext_resource type="Script" path="res://scripts/Player.cs" id="3_1gmgh"]
-[ext_resource type="Texture2D" uid="uid://c63lmml6fuvnh" path="res://sprites/crabbot/crabbot_idle1.png" id="4_urbx4"]
-[ext_resource type="Texture2D" uid="uid://boy33ujfgqo4f" path="res://sprites/crabbot/crabbot_idle2.png" id="5_rnq6h"]
-[ext_resource type="Texture2D" uid="uid://b5l6a2ihp6cor" path="res://sprites/crabbot/crabbot_idleOpen1.png" id="6_u7acu"]
-[ext_resource type="Texture2D" uid="uid://b51sstj8e52sa" path="res://sprites/crabbot/crabbot_idleOpen2.png" id="7_lonjt"]
-[ext_resource type="Texture2D" uid="uid://c1ltwejpq7qgn" path="res://sprites/crabbot/crabbot_swim1.png" id="8_lvdny"]
-[ext_resource type="Texture2D" uid="uid://cprfp80pvskcg" path="res://sprites/crabbot/crabbot_swim2.png" id="9_41lyi"]
-[ext_resource type="Texture2D" uid="uid://b0ya8hdes21a1" path="res://sprites/crabbot/crabbot_swim3.png" id="10_w77qx"]
-[ext_resource type="Texture2D" uid="uid://cmqtivvpam4gs" path="res://sprites/crabbot/crabbot_walk1.png" id="11_blfty"]
-[ext_resource type="Texture2D" uid="uid://dxo6h5ii37o5j" path="res://sprites/crabbot/crabbot_walk2.png" id="12_qf3r0"]
+[ext_resource type="PackedScene" uid="uid://cd32js1sbe5lc" path="res://Player.tscn" id="6_x7wbi"]
+[ext_resource type="Script" path="res://scripts/Tool.cs" id="13_egsp4"]
+[ext_resource type="Texture2D" uid="uid://bxncmuvspiotk" path="res://sprites/items/brockenPhone.png" id="14_ymibg"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_vk1yv"]
+script/source = "using Godot;
+using System;
+
+public partial class loadPlayer : Node2D
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+{
+	var playerScene = GD.Load<PackedScene>(\"res://dock.tscn\");
+	var playerInstance = (Player)playerScene.Instantiate();
+	
+	AddChild(playerInstance);
+	playerInstance.GlobalPosition = new Vector2(100, 200); // Set spawn position
+}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+}
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mq2kn"]
 texture = ExtResource("1_j0w1a")
@@ -196,53 +212,12 @@ physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 sources/0 = SubResource("TileSetAtlasSource_mq2kn")
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_uiywp"]
-resource_local_to_scene = true
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_urbx4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_rnq6h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_u7acu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_lonjt")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_lvdny")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_41lyi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_w77qx")
-}],
-"loop": true,
-"name": &"swim",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_blfty")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_qf3r0")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 4.0
-}]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ywsnb"]
+radius = 49.0
+height = 200.0
 
 [node name="Node2D" type="Node2D"]
+script = SubResource("CSharpScript_vk1yv")
 
 [node name="divingMap" type="TileMapLayer" parent="."]
 scale = Vector2(1.12676, 1.0059)
@@ -255,19 +230,17 @@ position = Vector2(-111, -351)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("3_1gmgh")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-limit_left = 0
-limit_top = 0
-position_smoothing_enabled = true
+[node name="BrockenPhone" type="Sprite2D" parent="Motor"]
+position = Vector2(-9, 6.00006)
+scale = Vector2(0.208008, 0.208008)
+texture = ExtResource("14_ymibg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(238, 269)
-scale = Vector2(0.250977, 0.250977)
-sprite_frames = SubResource("SpriteFrames_uiywp")
-animation = &"swim"
-autoplay = "idle"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Motor"]
+shape = SubResource("CapsuleShape2D_ywsnb")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
 polygon = PackedVector2Array(114, 341, 379, 340, 372, 239, 275, 179, 200, 177, 109, 244)
 
 [node name="Levels" type="Node2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("6_x7wbi")]
+position = Vector2(0, -205)
