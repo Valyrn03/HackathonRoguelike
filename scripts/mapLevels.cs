@@ -39,7 +39,12 @@ public class mapLevels{
 
         return map;
     }
+<<<<<<< HEAD
 public static Dictionary<Vector2I, Vector3I> GetMapTwo(){
+=======
+
+    public static Dictionary<Vector2I, Vector3I> GetMapTwo(){
+>>>>>>> 9072a895e8de64e5f17ec279878e7afa3b3070f5
         return null;
     }
 
