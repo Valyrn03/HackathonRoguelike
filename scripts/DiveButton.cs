@@ -2,7 +2,7 @@ using Godot;
 
 public partial class DiveButton : Area2D
 {
-	[Export] public string SceneToLoad = "res://scenes/divingInitialScene.tscn"; // Set this in the Inspector
+	[Export] public string SceneToLoad = "res://scenes/map.tscn"; // Set this in the Inspector
 
 	public override void _Ready()
 	{

@@ -29,36 +29,33 @@ public partial class Player : CharacterBody2D
 		playerAnimation.Play("idle");
 	}
 
-	// List to track the Sprite2D boxes
+	// List to track the Sprite2D boxesprivate List<Sprite2D> boxes = new List<Sprite2D>();
 
-	public override void _Process(double delta)
+public override void _Process(double delta)
+{
+	// Remove all existing boxes
+	foreach (var box in boxes)
 	{
-		// Remove all existing boxes
-		foreach (var box in boxes)
-		{
-			box.QueueFree();  // Removes the box from the scene
-		}
-		boxes.Clear(); // Clear the list
-		CharacterData.boxes.Clear();
-
-		// Create new boxes based on the tools count
-		for (int i = 0; i < tools.Count; i++)
-		{			
-			// Create the box sprite
-			Sprite2D box = new Sprite2D();
-			box.Texture = GD.Load<Texture2D>("res://images/openBox.png");
-			box.Position = new Vector2(50 + i * 50, -20);
-			box.Scale = new Vector2(0.05f, 0.05f);
-			
-			// Add box to the scene and to the list
-			AddChild(box);
-			boxes.Add(box);
-			CharacterData.boxes.Add(box);
-		}
-
-
-		// Update the character data
+		box.QueueFree();  // Removes the box from the scene
 	}
+	boxes.Clear(); // Clear the list
+
+	// Create new boxes based on the tools count
+	for (int i = 0; i < tools.Count; i++)
+	{
+		GD.Print(tools.Count);
+		
+		// Create the box sprite
+		Sprite2D box = new Sprite2D();
+		box.Texture = GD.Load<Texture2D>("res://images/openBox.png");
+		box.Position = new Vector2(50 + i * 50, -20);
+		box.Scale = new Vector2(0.05f, 0.05f);
+		
+		// Add box to the scene and to the list
+		AddChild(box);
+		boxes.Add(box);
+	}
+}
 	public override void _PhysicsProcess(double delta)
 {
 	Vector2 direction = Vector2.Zero;

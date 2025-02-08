@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=4 uid="uid://ckeu36qf6tc3x"]
+[gd_scene load_steps=3 format=4 uid="uid://dhh6rmvqccjel"]
 
 [ext_resource type="Script" path="res://scripts/divingMap.cs" id="1_aaotk"]
-[ext_resource type="TileSet" uid="uid://bsck3w8mqoxkr" path="res://scripts/classes/divingTileSet.tres" id="1_hpe6e"]
+[ext_resource type="TileSet" uid="uid://daywg1mitiiyd" path="res://scripts/classes/divingTileSet.tres" id="1_hpe6e"]
 
 [node name="Node2D" type="Node2D"]
 

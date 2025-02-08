@@ -604,7 +604,7 @@ tile_set = SubResource("TileSet_mmgtb")
 script = ExtResource("2_jv2e4")
 
 [node name="Player" parent="." instance=ExtResource("6_x7wbi")]
-position = Vector2(290, 55)
+position = Vector2(290, 25)
 
 [node name="Propeller" type="Area2D" parent="."]
 position = Vector2(214, 846)

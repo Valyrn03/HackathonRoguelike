@@ -1,0 +1,135 @@
+[gd_scene load_steps=12 format=3 uid="uid://d32tnv1dxwcuw"]
+
+[ext_resource type="Texture2D" uid="uid://bolg00cji1oqj" path="res://images/IMG_0715.png" id="1_7y5mu"]
+[ext_resource type="PackedScene" uid="uid://cd32js1sbe5lc" path="res://Player.tscn" id="2_48oqo"]
+[ext_resource type="Script" path="res://scripts/Tool.cs" id="3_fohta"]
+[ext_resource type="Texture2D" uid="uid://58vif8r64jvb" path="res://sprites/boat equipment/metal_plate.png" id="4_gdntg"]
+[ext_resource type="Texture2D" uid="uid://dlcifwtycq8kj" path="res://sprites/boat equipment/motor.PNG" id="5_iaje4"]
+[ext_resource type="Texture2D" uid="uid://bxncmuvspiotk" path="res://sprites/items/brockenPhone.png" id="6_st13p"]
+[ext_resource type="Texture2D" uid="uid://bwyer1nd5hgkg" path="res://sprites/items/crabbotPanel.png" id="7_rrsu5"]
+[ext_resource type="Texture2D" uid="uid://bhhn8lr1ooa2d" path="res://sprites/boat equipment/sail_folded.png" id="8_m8gh8"]
+[ext_resource type="Texture2D" uid="uid://dyf4yavu8onqh" path="res://sprites/items/sock.png" id="9_4mujb"]
+[ext_resource type="Texture2D" uid="uid://beloda4esjfrq" path="res://sprites/items/snail_empty.png" id="10_0h8tn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqhdj"]
+size = Vector2(174, 180)
+
+[node name="Map" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1967, 2013)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-2, 0)
+polygon = PackedVector2Array(-2004, -1260, -1831, -1260, -1556, -1199, -1288, -1296, -1057, -1269, -641, -1227, -550, -1201, -319, -1193, -180, -1300, 289, -1254, 358, -1073, 360, -642, 224, -463, 240, -333, 369, -194, 345, 63, 310, 244, -2, 305, -262, 162, -544, -389, -979, -709, -1137, -604, -1555, -699, -1873, -627, -1888, -349, -1779, -308, -1547, 191, -1516, 738, -1610, 804, -1675, 943, -1664, 1292, -1843, 1528, -1714, 1819, -1193, 1628, -627, 1794, -327, 1926, -177, 1926, -41, 1441, -217, 1205, -312, 885, -196, 669, 505, 785, 753, 833, 936, 720, 1367, 768, 1327, 1235, 1465, 1456, 1259, 1586, 1495, 1792, 1777, 1824, 1998, 1364, 1697, 1105, 1844, 583, 1688, 369, 1776, 169, 1669, -127, 1923, -744, 1660, -742, 1605, -979, 1382, -967, 1286, -872, 1151, -924, 1039, -767, 1124, -481, 1363, -336, 1344, 165, 1126, 327, 756, 184, 686, 3, 652, -237, 617, -474, 754, -773, 697, -1055, 618, -1196, 723, -1297, 1995, -1282, 2125, 2146, -2169, 2106, -2194, -1217)
+
+[node name="Map" type="Sprite2D" parent="."]
+position = Vector2(1967, 2013)
+texture = ExtResource("1_7y5mu")
+
+[node name="Player" parent="." instance=ExtResource("2_48oqo")]
+position = Vector2(2041, 362)
+
+[node name="Propeller" type="Area2D" parent="."]
+position = Vector2(332, 1490)
+script = ExtResource("3_fohta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Propeller"]
+position = Vector2(7, 14.9999)
+shape = SubResource("RectangleShape2D_gqhdj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Propeller"]
+position = Vector2(-8, 3)
+scale = Vector2(0.164062, 0.164062)
+texture = ExtResource("4_gdntg")
+
+[node name="Motor" type="Area2D" parent="."]
+position = Vector2(3439, 1243)
+script = ExtResource("3_fohta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Motor"]
+position = Vector2(7, 14.9999)
+shape = SubResource("RectangleShape2D_gqhdj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Motor"]
+position = Vector2(7.00024, 0)
+scale = Vector2(0.164062, 0.164062)
+texture = ExtResource("5_iaje4")
+
+[node name="SailL" type="Area2D" parent="."]
+position = Vector2(3775, 3471)
+script = ExtResource("3_fohta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SailL"]
+position = Vector2(7, 14.9999)
+shape = SubResource("RectangleShape2D_gqhdj")
+
+[node name="Sprite2D" type="Sprite2D" parent="SailL"]
+position = Vector2(7.00024, 0)
+scale = Vector2(0.164062, 0.164062)
+texture = ExtResource("5_iaje4")
+
+[node name="Phone" type="Area2D" parent="."]
+position = Vector2(2330, 1577)
+script = ExtResource("3_fohta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phone"]
+position = Vector2(7, 14.9999)
+shape = SubResource("RectangleShape2D_gqhdj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Phone"]
+position = Vector2(7.00024, 0)
+scale = Vector2(0.164062, 0.164062)
+texture = ExtResource("6_st13p")
+
+[node name="Panel" type="Area2D" parent="."]
+position = Vector2(1672, 3799)
+script = ExtResource("3_fohta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel"]
+position = Vector2(7, 14.9999)
+shape = SubResource("RectangleShape2D_gqhdj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(7.00024, 0)
+scale = Vector2(0.164062, 0.164062)
+texture = ExtResource("7_rrsu5")
+
+[node name="SailR" type="Area2D" parent="."]
+position = Vector2(558, 2995)
+script = ExtResource("3_fohta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SailR"]
+position = Vector2(7, 14.9999)
+shape = SubResource("RectangleShape2D_gqhdj")
+
+[node name="Sprite2D" type="Sprite2D" parent="SailR"]
+position = Vector2(7.00024, 0)
+scale = Vector2(0.164062, 0.164062)
+texture = ExtResource("8_m8gh8")
+
+[node name="Sock" type="Area2D" parent="."]
+position = Vector2(897, 3402)
+script = ExtResource("3_fohta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sock"]
+position = Vector2(7, 14.9999)
+shape = SubResource("RectangleShape2D_gqhdj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sock"]
+position = Vector2(7.00024, 0)
+scale = Vector2(0.164062, 0.164062)
+texture = ExtResource("9_4mujb")
+
+[node name="Snail" type="Area2D" parent="."]
+position = Vector2(1514, 779)
+script = ExtResource("3_fohta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Snail"]
+position = Vector2(7, 14.9999)
+shape = SubResource("RectangleShape2D_gqhdj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Snail"]
+position = Vector2(7.00024, 0)
+scale = Vector2(0.164062, 0.164062)
+texture = ExtResource("10_0h8tn")
