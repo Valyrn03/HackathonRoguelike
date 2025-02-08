@@ -205,7 +205,7 @@ shape = SubResource("RectangleShape2D_lj36r")
 [node name="Propeller" type="Area2D" parent="."]
 visible = false
 modulate = Color(0.663555, 0.296094, 0.925464, 1)
-position = Vector2(785, 518)
+position = Vector2(176, 73)
 script = ExtResource("8_7w45e")
 
 [node name="BrockenPhone" type="Sprite2D" parent="Propeller"]
@@ -219,7 +219,7 @@ shape = SubResource("CapsuleShape2D_oxbeo")
 [node name="Motor" type="Area2D" parent="."]
 visible = false
 modulate = Color(0.663555, 0.296094, 0.925464, 1)
-position = Vector2(1135, 531)
+position = Vector2(32, 73)
 script = ExtResource("8_7w45e")
 
 [node name="BrockenPhone" type="Sprite2D" parent="Motor"]

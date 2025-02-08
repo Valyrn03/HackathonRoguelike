@@ -37,6 +37,7 @@ public partial class Player : CharacterBody2D
 			box.QueueFree();  // Removes the box from the scene
 		}
 		boxes.Clear(); // Clear the list
+		CharacterData.boxes.Clear();
 
 		// Create new boxes based on the tools count
 		for (int i = 0; i < tools.Count; i++)
@@ -50,10 +51,11 @@ public partial class Player : CharacterBody2D
 			// Add box to the scene and to the list
 			AddChild(box);
 			boxes.Add(box);
+			CharacterData.boxes.Add(box);
 		}
 
+
 		// Update the character data
-		CharacterData.boxes = boxes;
 	}
 	public override void _PhysicsProcess(double delta)
 {
@@ -101,6 +103,14 @@ public partial class Player : CharacterBody2D
 			direction.Y = 0;
 			playerAnimation.Play("idle");
 		}
+	}
+
+	// go back to tne beginning scnene!
+	if (Input.IsActionJustPressed("reset"))
+	{
+		inWater = false;
+		CharacterData.inWater = false;
+		GetTree().ChangeSceneToFile("res://scenes/dock.tscn");
 	}
 
 	// Normalize direction vector (same behavior for both axes)
