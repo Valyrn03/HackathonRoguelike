@@ -18,30 +18,60 @@ public class mapLevels{
     public static Dictionary<Vector2I, Vector3I> GetMapOne(){
         Dictionary<Vector2I, Vector3I> map = new Dictionary<Vector2I, Vector3I>();
 
-        map.Add(new Vector2I(0, 0), new Vector3I(0, 3, 1));
-        map.Add(new Vector2I(1, 0), new Vector3I(2, 1, 2));
-        map.Add(new Vector2I(2, 0), new Vector3I(1, 2, 3));
-        map.Add(new Vector2I(3, 0), new Vector3I(2, 3, 1));
-        map.Add(new Vector2I(4, 0), new Vector3I(3, 0, 1));
-        map.Add(new Vector2I(5, 0), new Vector3I(0, 0, 2));
-        map.Add(new Vector2I(0, 1), new Vector3I(2, 3, 1));
-        map.Add(new Vector2I(1, 1), new Vector3I(0, 2, 0));
-        map.Add(new Vector2I(2, 1), new Vector3I(1, 0, 1));
-        map.Add(new Vector2I(3, 1), new Vector3I(2, 1, 2));
-        map.Add(new Vector2I(4, 1), new Vector3I(1, 1, 2));
-        map.Add(new Vector2I(2, 2), new Vector3I(0, 1, 0));
-        map.Add(new Vector2I(3, 2), new Vector3I(2, 0, 3));
-        map.Add(new Vector2I(4, 2), new Vector3I(0, 3, 3));
-        map.Add(new Vector2I(1, 3), new Vector3I(1, 3, 1));
-        map.Add(new Vector2I(2, 3), new Vector3I(1, 1, 2));
-        map.Add(new Vector2I(3, 3), new Vector3I(0, 2, 0));
-        map.Add(new Vector2I(4, 3), new Vector3I(1, 1, 2));
+        map.Add(new Vector2I(0, 0), new Vector3I(3, 2, 0));
+        map.Add(new Vector2I(1, 0), new Vector3I(2, 2, 0));
+        map.Add(new Vector2I(2, 0), new Vector3I(3, 2, 0));
+        map.Add(new Vector2I(3, 0), new Vector3I(3, 2, 0));
+        map.Add(new Vector2I(4, 0), new Vector3I(3, 2, 0));
+        map.Add(new Vector2I(0, 1), new Vector3I(0, 2, 0));
+        map.Add(new Vector2I(1, 1), new Vector3I(0, 0, 0));
+        map.Add(new Vector2I(2, 1), new Vector3I(2, 1, 0));
+        map.Add(new Vector2I(3, 1), new Vector3I(3, 0, 0));
+        map.Add(new Vector2I(4, 1), new Vector3I(1, 1, 0));
+        map.Add(new Vector2I(1, 2), new Vector3I(5, 1, 0));
+        map.Add(new Vector2I(2, 2), new Vector3I(3, 1, 0));
+        map.Add(new Vector2I(3, 2), new Vector3I(4, 0, 0));
+        map.Add(new Vector2I(4, 2), new Vector3I(3, 1, 0));
+        map.Add(new Vector2I(1, 3), new Vector3I(4, 4, 0));
+        map.Add(new Vector2I(2, 3), new Vector3I(1, 1, 0));
+        map.Add(new Vector2I(3, 3), new Vector3I(1, 0, 0));
+        map.Add(new Vector2I(4, 3), new Vector3I(3, 0, 0));
+        map.Add(new Vector2I(2, 4), new Vector3I(4, 1, 0));
+        map.Add(new Vector2I(3, 4), new Vector3I(2, 1, 0));
+        map.Add(new Vector2I(4, 4), new Vector3I(0, 1, 0));
 
         return map;
     }
 
     public static Dictionary<Vector2I, Vector3I> GetMapTwo(){
-        return null;
+        Dictionary<Vector2I, Vector3I> map = new Dictionary<Vector2I, Vector3I>();
+
+        map.Add(new Vector2I(0, 0), new Vector3I(3, 2, 0));
+        map.Add(new Vector2I(1, 0), new Vector3I(3, 2, 0));
+        map.Add(new Vector2I(2, 0), new Vector3I(2, 2, 0));
+        map.Add(new Vector2I(3, 0), new Vector3I(3, 2, 0));
+        map.Add(new Vector2I(4, 0), new Vector3I(3, 2, 0));
+
+        map.Add(new Vector2I(2, 1), new Vector3I(2, 0, 0));
+        map.Add(new Vector2I(-1, 2), new Vector3I(0, 2, 0));
+        map.Add(new Vector2I(0, 2), new Vector3I(1, 1, 0));
+        map.Add(new Vector2I(2, 2), new Vector3I(4, 0, 0));
+        map.Add(new Vector2I(3, 2), new Vector3I(1, 1, 0));
+        map.Add(new Vector2I(4, 2), new Vector3I(0, 2, 0));
+        map.Add(new Vector2I(5, 2), new Vector3I(1, 1, 0));
+        map.Add(new Vector2I(6, 2), new Vector3I(3, 1, 0));
+        map.Add(new Vector2I(0, 3), new Vector3I(4, 0, 0));
+        map.Add(new Vector2I(1, 3), new Vector3I(2, 1, 0));
+        map.Add(new Vector2I(2, 3), new Vector3I(2, 0, 0));
+        map.Add(new Vector2I(3, 3), new Vector3I(5, 0, 0));
+        map.Add(new Vector2I(5, 3), new Vector3I(4, 0, 0));
+        map.Add(new Vector2I(0, 4), new Vector3I(5, 0, 0));
+        map.Add(new Vector2I(2, 4), new Vector3I(4, 1, 0));
+        map.Add(new Vector2I(3, 4), new Vector3I(2, 1, 0));
+        map.Add(new Vector2I(4, 4), new Vector3I(2, 1, 0));
+        map.Add(new Vector2I(5, 4), new Vector3I(0, 1, 0));
+
+        return map;
     }
 
     public static Dictionary<Vector2I, Vector3I> GetMapThree(){
