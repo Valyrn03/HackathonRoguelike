@@ -5,25 +5,23 @@ using System.Numerics;
 
 public partial class divingMap : TileMapLayer
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		Random random = new Random();
-		
-		GD.Print(System.IO.Directory.GetCurrentDirectory());
-		// Dictionary<Vector2I, Vector3I> tiles = mapLevels.GetMap(random.Next(0, 5));
-		Dictionary<Vector2I, Vector3I> tiles = mapLevels.GetMap(0);
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        Random random = new Random();
 
-		foreach(KeyValuePair<Vector2I, Vector3I> tile in tiles){
-			SetCell(tile.Key, 0, new Vector2I(tile.Value.X, tile.Value.Y), tile.Value.Z);
-		}
-	}
+        GD.Print(System.IO.Directory.GetCurrentDirectory());
+        // Dictionary<Vector2I, Vector3I> tiles = mapLevels.GetMap(random.Next(0, 5));
+        Dictionary<Vector2I, Vector3I> tiles = mapLevels.GetMap(0);
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+        foreach(KeyValuePair<Vector2I, Vector3I> tile in tiles){
+            SetCell(tile.Key, 0, new Vector2I(tile.Value.X, tile.Value.Y), tile.Value.Z);
+        }
+    }
 
-	}
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
+    {
 
-
+    }
 }

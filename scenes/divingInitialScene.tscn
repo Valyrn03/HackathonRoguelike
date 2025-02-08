@@ -1,34 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://ck8ceypidusnl"]
+[gd_scene load_steps=8 format=4 uid="uid://ck8ceypidusnl"]
 
 [ext_resource type="Texture2D" uid="uid://dwqgugljqqssb" path="res://images/Tile set.png" id="1_j0w1a"]
 [ext_resource type="Texture2D" uid="uid://dewodrpax8qrt" path="res://images/Tile set(1).png" id="2_bm3sv"]
 [ext_resource type="Script" path="res://scripts/divingMap.cs" id="2_jv2e4"]
 [ext_resource type="PackedScene" uid="uid://cd32js1sbe5lc" path="res://Player.tscn" id="6_x7wbi"]
-[ext_resource type="Script" path="res://scripts/Tool.cs" id="13_egsp4"]
-[ext_resource type="Texture2D" uid="uid://bxncmuvspiotk" path="res://sprites/items/brockenPhone.png" id="14_ymibg"]
-
-[sub_resource type="CSharpScript" id="CSharpScript_vk1yv"]
-script/source = "using Godot;
-using System;
-
-public partial class loadPlayer : Node2D
-{
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-{
-	var playerScene = GD.Load<PackedScene>(\"res://dock.tscn\");
-	var playerInstance = (Player)playerScene.Instantiate();
-	
-	AddChild(playerInstance);
-	playerInstance.GlobalPosition = new Vector2(100, 200); // Set spawn position
-}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-}
-"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mq2kn"]
 texture = ExtResource("1_j0w1a")
@@ -611,12 +586,7 @@ terrain_set_0/mode = 0
 sources/0 = SubResource("TileSetAtlasSource_mq2kn")
 sources/1 = SubResource("TileSetAtlasSource_ayn23")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ywsnb"]
-radius = 49.0
-height = 200.0
-
-[node name="Node2D" type="Node2D"]
-script = SubResource("CSharpScript_vk1yv")
+[node name="Node2D2" type="Node2D"]
 
 [node name="divingMap" type="TileMapLayer" parent="."]
 scale = Vector2(1.8, 1.8)
@@ -624,20 +594,5 @@ tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAACAAEAAAABAAAAAAACAAAAAAABAAI
 tile_set = SubResource("TileSet_mmgtb")
 script = ExtResource("2_jv2e4")
 
-[node name="Phone" type="Area2D" parent="."]
-
-[node name="Motor" type="Area2D" parent="."]
-modulate = Color(0.663555, 0.296094, 0.925464, 1)
-position = Vector2(147, 110)
-script = ExtResource("13_egsp4")
-
-[node name="BrockenPhone" type="Sprite2D" parent="Motor"]
-position = Vector2(-9, 6.00006)
-scale = Vector2(0.208008, 0.208008)
-texture = ExtResource("14_ymibg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Motor"]
-shape = SubResource("CapsuleShape2D_ywsnb")
-
 [node name="Player" parent="." instance=ExtResource("6_x7wbi")]
-position = Vector2(0, -205)
+position = Vector2(1852, 115)

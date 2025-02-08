@@ -23,7 +23,6 @@ CharacterData="*res://scripts/CharacterData.cs"
 
 window/size/viewport_width=1500
 window/size/viewport_height=900
-window/size/borderless=true
 
 [dotnet]
 
