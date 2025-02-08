@@ -2,7 +2,7 @@ using Godot;
 
 public partial class loadDockScene : Button
 {
-	[Export] public string SceneToLoad = "res://dock.tscn"; // Set this in the Inspector
+	[Export] public string SceneToLoad = "res://scenes/dock.tscn"; // Set this in the Inspector
 
 	public override void _Ready()
 	{
@@ -10,9 +10,8 @@ public partial class loadDockScene : Button
 		this.Pressed += OnButtonPressed;
 	}
 
-	private async void OnButtonPressed()
+	private void OnButtonPressed()
 	{
-		await ToSignal(GetTree().CreateTimer(1.0f), "timeout"); // Wait 1 second
 		GetTree().ChangeSceneToFile(SceneToLoad);
 	}
 }

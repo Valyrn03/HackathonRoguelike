@@ -1,5 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://bh4w2l41mr1mv"]
+[gd_scene load_steps=36 format=3 uid="uid://bh4w2l41mr1mv"]
 
+[ext_resource type="Texture2D" uid="uid://b54v7twcufy15" path="res://images/sky1.png" id="1_5p7uu"]
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_snsu6"]
 [ext_resource type="Texture2D" uid="uid://c63lmml6fuvnh" path="res://sprites/crabbot/crabbot_idle1.png" id="2_kyd66"]
 [ext_resource type="Texture2D" uid="uid://boy33ujfgqo4f" path="res://sprites/crabbot/crabbot_idle2.png" id="3_1cq7b"]
@@ -14,11 +15,42 @@
 [ext_resource type="Texture2D" uid="uid://c1ltwejpq7qgn" path="res://sprites/crabbot/crabbot_swim1.png" id="9_pyhlf"]
 [ext_resource type="Texture2D" uid="uid://b7go8lcke5aqc" path="res://images/ocean-1.png" id="9_uoxd1"]
 [ext_resource type="Texture2D" uid="uid://cprfp80pvskcg" path="res://sprites/crabbot/crabbot_swim2.png" id="10_rtdv2"]
+[ext_resource type="Texture2D" uid="uid://b7d7wmhhartbt" path="res://sprites/boat equipment/sail_mastandboom.png" id="11_2k573"]
 [ext_resource type="Texture2D" uid="uid://bxncmuvspiotk" path="res://sprites/items/brockenPhone.png" id="11_5peg8"]
 [ext_resource type="Texture2D" uid="uid://b0ya8hdes21a1" path="res://sprites/crabbot/crabbot_swim3.png" id="11_iykhb"]
 [ext_resource type="Texture2D" uid="uid://dihgugakuahyh" path="res://buttons/graySailButton.png" id="11_mc7yo"]
+[ext_resource type="Texture2D" uid="uid://dtujijmdjfevv" path="res://sprites/boat equipment/boat_hole.png" id="12_fejy8"]
 [ext_resource type="Texture2D" uid="uid://2xj61acive1y" path="res://buttons/sailAwayButton.png" id="12_q2puq"]
 [ext_resource type="Texture2D" uid="uid://cd7scjel5jjf7" path="res://buttons/diveButton.png" id="12_uebc5"]
+[ext_resource type="Texture2D" uid="uid://cgb2ftimw2kt6" path="res://images/upgradeButton.png" id="12_v1n6e"]
+[ext_resource type="Texture2D" uid="uid://b6kir7wy0rxhb" path="res://images/night/night1.png" id="23_7b1b2"]
+[ext_resource type="Script" path="res://scripts/DiveButton.cs" id="24_83ahu"]
+[ext_resource type="Texture2D" uid="uid://byhke1twig4cc" path="res://images/night/night2.png" id="24_o7ghy"]
+[ext_resource type="Texture2D" uid="uid://b5pte20vttrw" path="res://images/night/night3.png" id="25_3iqad"]
+[ext_resource type="Texture2D" uid="uid://bc8c5apx0ded2" path="res://images/night/night4.png" id="26_e8uqg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q7uoi"]
+animations = [{
+"frames": [{
+"duration": 10.0,
+"texture": ExtResource("1_5p7uu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_7b1b2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_o7ghy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_3iqad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_e8uqg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hu3x"]
 size = Vector2(3813.68, 1167)
@@ -90,11 +122,21 @@ animations = [{
 radius = 49.0
 height = 200.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72y78"]
+size = Vector2(1367.16, 2168.92)
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(109, 38)
 
+[node name="Sky" type="AnimatedSprite2D" parent="."]
+position = Vector2(785, 468)
+scale = Vector2(0.184075, 0.184075)
+sprite_frames = SubResource("SpriteFrames_q7uoi")
+autoplay = "default"
+frame_progress = 0.370998
+
 [node name="Ocean Obj" type="StaticBody2D" parent="."]
-position = Vector2(594, 116)
+position = Vector2(706, 354)
 scale = Vector2(0.179092, 0.179092)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ocean Obj"]
@@ -105,8 +147,56 @@ shape = SubResource("RectangleShape2D_7hu3x")
 position = Vector2(0, 4.26004e-05)
 sprite_frames = SubResource("SpriteFrames_j7lbo")
 
+[node name="Boat parent" type="Area2D" parent="."]
+position = Vector2(956, 589)
+scale = Vector2(0.258789, 0.258789)
+script = ExtResource("6_h2jhd")
+
+[node name="Sail Away" type="Button" parent="Boat parent"]
+offset_left = -1387.23
+offset_top = -1012.41
+offset_right = -1182.23
+offset_bottom = -946.407
+scale = Vector2(3.92441, 3.92441)
+
+[node name="GraySailButton" type="Sprite2D" parent="Boat parent/Sail Away"]
+position = Vector2(106, -71)
+scale = Vector2(0.319995, 0.319995)
+texture = ExtResource("11_mc7yo")
+
+[node name="SailAwayButton" type="Sprite2D" parent="Boat parent/Sail Away"]
+visible = false
+position = Vector2(105, 94)
+scale = Vector2(0.329386, 0.329386)
+texture = ExtResource("12_q2puq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boat parent"]
+polygon = PackedVector2Array(-915.804, -378.687, -768.966, 73.4189, 768.966, 96.6038, 981.494, -355.502)
+one_way_collision_margin = 0.0
+
+[node name="Mast" type="Sprite2D" parent="Boat parent"]
+visible = false
+position = Vector2(-54.0981, -707.14)
+texture = ExtResource("11_2k573")
+
+[node name="BoatImage" type="Sprite2D" parent="Boat parent"]
+position = Vector2(46.3698, 3.86415)
+texture = ExtResource("12_fejy8")
+
+[node name="Upgrade" type="Button" parent="Boat parent"]
+offset_left = -486.883
+offset_top = -1012.41
+offset_right = -411.883
+offset_bottom = -981.408
+scale = Vector2(9.344, 9.70613)
+
+[node name="UpgradeButton" type="Sprite2D" parent="Boat parent/Upgrade"]
+position = Vector2(41.7679, -11.5453)
+scale = Vector2(0.129056, 0.124241)
+texture = ExtResource("12_v1n6e")
+
 [node name="Dock" type="Sprite2D" parent="."]
-position = Vector2(665, 418)
+position = Vector2(702, 696)
 scale = Vector2(1.256, 1.256)
 texture = ExtResource("8_i8lp1")
 flip_h = true
@@ -117,9 +207,11 @@ scale = Vector2(0.796178, 0.796178)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dock/Dock Collision"]
 position = Vector2(-145, 202.5)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_lj36r")
 
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(37, 278)
 script = ExtResource("1_snsu6")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -137,67 +229,49 @@ autoplay = "idle"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
 polygon = PackedVector2Array(114, 341, 379, 340, 372, 239, 275, 179, 200, 177, 109, 244)
 
-[node name="Boat" type="Sprite2D" parent="."]
-script = ExtResource("6_h2jhd")
-
-[node name="Polygon2D" type="Polygon2D" parent="Boat"]
-polygon = PackedVector2Array(1182, 326, 1332, 418, 1460, 304, 1373, 207, 1301, 116, 1320, 299)
-
 [node name="Broken Phone" type="Area2D" parent="."]
 modulate = Color(0.663555, 0.296094, 0.925464, 1)
-position = Vector2(748, 240)
+position = Vector2(785, 518)
 script = ExtResource("8_7w45e")
 
 [node name="BrockenPhone" type="Sprite2D" parent="Broken Phone"]
-position = Vector2(-10, 7)
+position = Vector2(-9.53674e-07, 13.0001)
 scale = Vector2(0.208008, 0.208008)
 texture = ExtResource("11_5peg8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Broken Phone"]
 shape = SubResource("CapsuleShape2D_oxbeo")
 
-[node name="phone2" type="Area2D" parent="."]
+[node name="phone" type="Area2D" parent="."]
 modulate = Color(0.663555, 0.296094, 0.925464, 1)
-position = Vector2(1098, 253)
+position = Vector2(1135, 531)
 script = ExtResource("8_7w45e")
 
-[node name="BrockenPhone" type="Sprite2D" parent="phone2"]
-position = Vector2(-10, 7)
+[node name="BrockenPhone" type="Sprite2D" parent="phone"]
+position = Vector2(-9, 6.00006)
 scale = Vector2(0.208008, 0.208008)
 texture = ExtResource("11_5peg8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="phone2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="phone"]
 shape = SubResource("CapsuleShape2D_oxbeo")
 
 [node name="Leftg Wall" type="StaticBody2D" parent="."]
+position = Vector2(-70, 278)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Leftg Wall"]
 position = Vector2(-62, -15)
 polygon = PackedVector2Array(22, 520, 33, -3, -70, -3, -80, 529)
 
-[node name="Sail Away" type="Button" parent="."]
-offset_left = 1230.0
-offset_right = 1435.0
-offset_bottom = 66.0
-
-[node name="GraySailButton" type="Sprite2D" parent="Sail Away"]
-position = Vector2(106, -71)
-scale = Vector2(0.319995, 0.319995)
-texture = ExtResource("11_mc7yo")
-
-[node name="SailAwayButton" type="Sprite2D" parent="Sail Away"]
-visible = false
-position = Vector2(105, 94)
-scale = Vector2(0.329386, 0.329386)
-texture = ExtResource("12_q2puq")
-
-[node name="dive button" type="Button" parent="."]
-offset_left = 1230.0
-offset_top = 511.0
-offset_right = 1431.0
-offset_bottom = 578.0
-
-[node name="DiveButton" type="Sprite2D" parent="dive button"]
-position = Vector2(104, 0)
+[node name="DiveArea" type="Area2D" parent="."]
+position = Vector2(1320, 716)
 scale = Vector2(0.335, 0.335)
+script = ExtResource("24_83ahu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DiveArea"]
+position = Vector2(322.388, 1062.69)
+shape = SubResource("RectangleShape2D_72y78")
+one_way_collision = true
+
+[node name="DiveButton" type="Sprite2D" parent="DiveArea"]
+position = Vector2(0, 47.7614)
 texture = ExtResource("12_uebc5")
