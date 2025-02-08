@@ -13,28 +13,49 @@ public partial class Player : CharacterBody2D
 	private AnimatedSprite2D playerAnimation;
 
 	private bool inWater = false;
+		private List<Sprite2D> boxes = new List<Sprite2D>();
+
 
 	public override void _Ready()
 	{	
 			// get hte tools
 		tools = CharacterData.tools;
 		inWater = CharacterData.inWater;
+		boxes  = CharacterData.boxes;
 
 		playerAnimation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		playerAnimation.Play("idle");
 	}
 
+	// List to track the Sprite2D boxes
+
 	public override void _Process(double delta)
 	{
-		// put a box for each thing collected 
-		for (int i = 0; i < tools.Count; i++)
+		// Remove all existing boxes
+		foreach (var box in boxes)
 		{
+			box.QueueFree();  // Removes the box from the scene
+		}
+		boxes.Clear(); // Clear the list
+		CharacterData.boxes.Clear();
+
+		// Create new boxes based on the tools count
+		for (int i = 0; i < tools.Count; i++)
+		{			
+			// Create the box sprite
 			Sprite2D box = new Sprite2D();
 			box.Texture = GD.Load<Texture2D>("res://images/openBox.png");
 			box.Position = new Vector2(50 + i * 50, -20);
 			box.Scale = new Vector2(0.05f, 0.05f);
+			
+			// Add box to the scene and to the list
 			AddChild(box);
+			boxes.Add(box);
+			CharacterData.boxes.Add(box);
 		}
+
+
+		// Update the character data
 	}
 	public override void _PhysicsProcess(double delta)
 {
@@ -82,6 +103,14 @@ public partial class Player : CharacterBody2D
 			direction.Y = 0;
 			playerAnimation.Play("idle");
 		}
+	}
+
+	// go back to tne beginning scnene!
+	if (Input.IsActionJustPressed("reset"))
+	{
+		inWater = false;
+		CharacterData.inWater = false;
+		GetTree().ChangeSceneToFile("res://scenes/dock.tscn");
 	}
 
 	// Normalize direction vector (same behavior for both axes)
