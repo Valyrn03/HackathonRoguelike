@@ -12,7 +12,8 @@ public partial class DiveButton : Area2D
 
 	private void OnBodyEntered(Node body)
 	{
-		if (body is Player){        
+		if (body is Player){     
+			CharacterData.inWater = true;   
 		// Change to the new scene
 		GetTree().ChangeSceneToFile(SceneToLoad);  
 		}

@@ -12,10 +12,13 @@ public partial class Player : CharacterBody2D
 	public List<Tool> tools = new List<Tool>(); // Player tools
 	private AnimatedSprite2D playerAnimation;
 
+	private bool inWater = false;
+
 	public override void _Ready()
 	{	
 			// get hte tools
 		tools = CharacterData.tools;
+		inWater = CharacterData.inWater;
 
 		playerAnimation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		playerAnimation.Play("idle");
@@ -25,7 +28,7 @@ public partial class Player : CharacterBody2D
 		Vector2 direction = Vector2.Zero;
 
 		// Apply gravity if not on the floor
-		if (!IsOnFloor())
+		if (!IsOnFloor() && !inWater)
 		{
 			Velocity += new Vector2(0, Gravity * (float)delta);
 		}
