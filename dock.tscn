@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://bf2p2ncjlr5c4"]
+
+[ext_resource type="Script" path="res://Player.cs" id="1_snsu6"]
+[ext_resource type="Texture2D" uid="uid://cs4w41t6m5r64" path="res://crabbot_idle1.png" id="2_kyd66"]
+[ext_resource type="Texture2D" uid="uid://dxt6gulxj6s2c" path="res://crabbot_idle2.png" id="3_1cq7b"]
+[ext_resource type="Script" path="res://button.gd" id="3_pppwl"]
+[ext_resource type="Texture2D" uid="uid://0loj32egldvp" path="res://crabbot_walk1.png" id="4_siigf"]
+[ext_resource type="Texture2D" uid="uid://c3p64r0g50xa7" path="res://crabbot_walk2.png" id="5_gqapv"]
+[ext_resource type="Script" path="res://Boat.cs" id="6_h2jhd"]
+[ext_resource type="Texture2D" uid="uid://dtwk21ivq7m45" path="res://dock.png" id="8_i8lp1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jbvnq"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kyd66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1cq7b")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_siigf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gqapv")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lj36r"]
+size = Vector2(838, 147)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oxbeo"]
+radius = 49.0
+height = 200.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_snsu6")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_top = 0
+position_smoothing_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(238, 269)
+scale = Vector2(0.250977, 0.250977)
+sprite_frames = SubResource("SpriteFrames_jbvnq")
+animation = &"walk"
+autoplay = "idle"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
+polygon = PackedVector2Array(114, 341, 379, 340, 372, 239, 275, 179, 200, 177, 109, 244)
+
+[node name="Boat" type="Sprite2D" parent="."]
+script = ExtResource("6_h2jhd")
+
+[node name="Polygon2D" type="Polygon2D" parent="Boat"]
+polygon = PackedVector2Array(1182, 326, 1332, 418, 1460, 304, 1373, 207, 1301, 116, 1320, 299)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1062.0
+offset_top = 116.0
+offset_right = 1239.0
+offset_bottom = 210.0
+text = "Upgrade"
+script = ExtResource("3_pppwl")
+
+[node name="Dock" type="Sprite2D" parent="."]
+position = Vector2(546, 405)
+scale = Vector2(1.256, 1.256)
+texture = ExtResource("8_i8lp1")
+
+[node name="Dock Collision" type="StaticBody2D" parent="."]
+position = Vector2(748, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dock Collision"]
+position = Vector2(-253, 202.5)
+shape = SubResource("RectangleShape2D_lj36r")
+
+[node name="item" type="StaticBody2D" parent="."]
+modulate = Color(0.663555, 0.296094, 0.925464, 1)
+position = Vector2(748, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="item"]
+shape = SubResource("CapsuleShape2D_oxbeo")
+
+[node name="Wall Bound" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall Bound"]
+position = Vector2(26, -22)
+polygon = PackedVector2Array(22, 520, 33, -3, -70, -3, -80, 529)
