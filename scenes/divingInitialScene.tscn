@@ -245,12 +245,14 @@ animations = [{
 [node name="Node2D" type="Node2D"]
 
 [node name="divingMap" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAACAAEAAAABAAAAAAABAAAAAAACAAEAADACAAAAAAABAAIAAGABAAEAAAAAAAIAAAAAAAEAAAADAAAAAAACAAIAAAAAAAEAAAACAAMAAAABAAEAADABAAMAAAABAAMAAFA=")
+scale = Vector2(1.12676, 1.0059)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAMAAQABAAAAAAACAAEAADACAAAAAAABAAIAAGADAAAAAAACAAMAAQAEAAAAAAADAAAAAQAFAAAAAAAAAAAAAgAEAAMAAAABAAEAAgADAAMAAAAAAAIAAAACAAMAAAABAAEAADABAAMAAAABAAMAAFACAAIAAAAAAAEAAAADAAIAAAACAAAAAwAEAAIAAAAAAAMAAwAEAAEAAAABAAEAAgADAAEAAAACAAEAAgACAAEAAAABAAAAAAABAAEAAAAAAAIAAAAAAAEAAAACAAMAAQA=")
 tile_set = SubResource("TileSet_mmgtb")
 script = ExtResource("2_jv2e4")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-111, -351)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("3_1gmgh")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -267,3 +269,5 @@ autoplay = "idle"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
 polygon = PackedVector2Array(114, 341, 379, 340, 372, 239, 275, 179, 200, 177, 109, 244)
+
+[node name="Levels" type="Node2D" parent="."]
