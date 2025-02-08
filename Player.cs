@@ -61,6 +61,21 @@ namespace Hackathon
 			MoveAndSlide();
 		}
 
+	public void PickUpTool(Tool tool)
+	{
+		GD.Print("Picked up: " + tool.Name);
+		tools.Add(tool);
+		tool.QueueFree(); // Removes the tool from the scene
+	}
+
+	private void _on_body_entered(Node body)
+	{
+		if (body is Tool tool)
+		{
+			PickUpTool(tool);
+		}
+	}
+
 		public void PickUpTool()
 		{
 			// Tools.Add();
