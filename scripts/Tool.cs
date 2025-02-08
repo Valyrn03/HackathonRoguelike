@@ -10,11 +10,7 @@ public partial class Tool : Node
 	{
 		Connect("body_entered", new Callable(this, nameof(OnBodyEntered)));
 
-	   Node childNode = GetNode("YourChildNodeName");
-		if (childNode is Sprite2D)
-		{
-			sprite = (Sprite2D)childNode;
-		}
+	   sprite = GetNode<Sprite2D>("");
 	}
 
 	private void OnBodyEntered(Node body)

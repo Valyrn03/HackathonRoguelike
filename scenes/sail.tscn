@@ -1,10 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://dj8ryyid610o6"]
+[gd_scene load_steps=6 format=3 uid="uid://dj8ryyid610o6"]
 
-[ext_resource type="Texture2D" uid="uid://b54v7twcufy15" path="res://images/sky1.png" id="1_t7pmx"]
+[ext_resource type="Texture2D" uid="uid://u56pcrbh8f0h" path="res://images/end/pixil-gif-drawing-1 (dragged).png" id="1_1un3f"]
+[ext_resource type="Texture2D" uid="uid://c5jf1prfr7ggi" path="res://images/end/pixil-gif-drawing-2 (dragged).png" id="2_hswgg"]
+[ext_resource type="Texture2D" uid="uid://dbme56nfypkyb" path="res://images/end/pixil-gif-drawing-3 (dragged).png" id="3_xgotk"]
+[ext_resource type="Texture2D" uid="uid://d0nhwvw7cvypo" path="res://images/end/pixil-gif-drawing-4 (dragged).png" id="4_4ak0g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_56cho"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1un3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hswgg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xgotk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4ak0g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Sky1" type="Sprite2D" parent="."]
-position = Vector2(2046.9, 1135.5)
-scale = Vector2(0.412909, 0.412909)
-texture = ExtResource("1_t7pmx")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(743.987, 453)
+scale = Vector2(1.03332, 1.1276)
+sprite_frames = SubResource("SpriteFrames_56cho")
+autoplay = "default"

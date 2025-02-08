@@ -29,19 +29,19 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_q7uoi"]
 animations = [{
 "frames": [{
-"duration": 10.0,
+"duration": 30.0,
 "texture": ExtResource("1_5p7uu")
 }, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": ExtResource("23_7b1b2")
 }, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": ExtResource("24_o7ghy")
 }, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": ExtResource("25_3iqad")
 }, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": ExtResource("26_e8uqg")
 }],
 "loop": true,
@@ -185,6 +185,9 @@ position = Vector2(41.7679, -11.5453)
 scale = Vector2(0.129056, 0.124241)
 texture = ExtResource("12_v1n6e")
 
+[node name="Player" parent="." instance=ExtResource("25_lbyu3")]
+position = Vector2(137, 454)
+
 [node name="Dock" type="Sprite2D" parent="."]
 position = Vector2(702, 696)
 scale = Vector2(1.256, 1.256)
@@ -200,6 +203,7 @@ position = Vector2(-145, 202.5)
 shape = SubResource("RectangleShape2D_lj36r")
 
 [node name="Propeller" type="Area2D" parent="."]
+visible = false
 modulate = Color(0.663555, 0.296094, 0.925464, 1)
 position = Vector2(785, 518)
 script = ExtResource("8_7w45e")
@@ -213,6 +217,7 @@ texture = ExtResource("11_5peg8")
 shape = SubResource("CapsuleShape2D_oxbeo")
 
 [node name="Motor" type="Area2D" parent="."]
+visible = false
 modulate = Color(0.663555, 0.296094, 0.925464, 1)
 position = Vector2(1135, 531)
 script = ExtResource("8_7w45e")
@@ -245,5 +250,3 @@ one_way_collision = true
 [node name="DiveButton" type="Sprite2D" parent="DiveArea"]
 position = Vector2(0, 47.7614)
 texture = ExtResource("12_uebc5")
-
-[node name="Player" parent="." instance=ExtResource("25_lbyu3")]

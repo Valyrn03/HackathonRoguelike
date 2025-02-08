@@ -7,7 +7,7 @@ public partial class Boat : Node
 	public int speed = 100;
 	public float durability = 0.5f;
 	public int upgrade_level = 0;
-	public int maxUpgradeLevel = 1; // arbitrary number
+	public int maxUpgradeLevel = 8; // arbitrary number
 
 	// The child of the boat change the image based on reparedness
 	private Sprite2D image;
@@ -128,6 +128,8 @@ public partial class Boat : Node
 		Sprite2D sailAwayGreen = sailAway.GetNode<Sprite2D>("Sail Away Green");
 		GD.Print(sailAwayGreen);
 		sailAwayGreen.Visible = true;
+
+		SailAway();
 	} 
 
 	public void SailAway()
