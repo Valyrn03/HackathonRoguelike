@@ -13,9 +13,12 @@ public partial class divingMap : TileMapLayer
         GD.Print(System.IO.Directory.GetCurrentDirectory());
         // Dictionary<Vector2I, Vector3I> tiles = mapLevels.GetMap(random.Next(0, 5));
         Dictionary<Vector2I, Vector3I> tiles = mapLevels.GetMap(0);
+		GD.Print("Found Map, Total Tiles: " + tiles.Count);
 
+		GD.Print("Adding Tiles: ");
         foreach(KeyValuePair<Vector2I, Vector3I> tile in tiles){
-            SetCell(tile.Key, 0, new Vector2I(tile.Value.X, tile.Value.Y), tile.Value.Z);
+			GD.Print("\tAdding Tile At" + tile.Key.X + ", " + tile.Key.Y);
+            SetCell(tile.Key, 0, new Vector2I(tile.Value.X, tile.Value.Y), 0);
         }
     }
 
