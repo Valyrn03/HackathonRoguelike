@@ -220,15 +220,17 @@ height = 200.0
 script = SubResource("CSharpScript_vk1yv")
 
 [node name="divingMap" type="TileMapLayer" parent="."]
-scale = Vector2(1.12676, 1.0059)
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAMAAQABAAAAAAACAAEAADACAAAAAAABAAIAAGADAAAAAAACAAMAAQAEAAAAAAADAAAAAQAFAAAAAAAAAAAAAgAEAAMAAAABAAEAAgADAAMAAAAAAAIAAAACAAMAAAABAAEAADABAAMAAAABAAMAAFACAAIAAAAAAAEAAAADAAIAAAACAAAAAwAEAAIAAAAAAAMAAwAEAAEAAAABAAEAAgADAAEAAAACAAEAAgACAAEAAAABAAAAAAABAAEAAAAAAAIAAAAAAAEAAAACAAMAAQA=")
+scale = Vector2(1.8, 1.8)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAACAAEAAAABAAAAAAABAAAAAAACAAEAADACAAAAAAABAAIAAGABAAEAAAAAAAIAAAAAAAEAAAADAAAAAAACAAIAAAAAAAEAAAACAAMAAAABAAEAADABAAMAAAABAAMAAFA=")
 tile_set = SubResource("TileSet_mmgtb")
 script = ExtResource("2_jv2e4")
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(-111, -351)
-scale = Vector2(0.5, 0.5)
-script = ExtResource("3_1gmgh")
+[node name="Phone" type="Area2D" parent="."]
+
+[node name="Motor" type="Area2D" parent="."]
+modulate = Color(0.663555, 0.296094, 0.925464, 1)
+position = Vector2(147, 110)
+script = ExtResource("13_egsp4")
 
 [node name="BrockenPhone" type="Sprite2D" parent="Motor"]
 position = Vector2(-9, 6.00006)
@@ -238,9 +240,5 @@ texture = ExtResource("14_ymibg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Motor"]
 shape = SubResource("CapsuleShape2D_ywsnb")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
-polygon = PackedVector2Array(114, 341, 379, 340, 372, 239, 275, 179, 200, 177, 109, 244)
-
-[node name="Levels" type="Node2D" parent="."]
 [node name="Player" parent="." instance=ExtResource("6_x7wbi")]
 position = Vector2(0, -205)
