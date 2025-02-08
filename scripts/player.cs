@@ -24,45 +24,68 @@ public partial class Player : CharacterBody2D
 		playerAnimation.Play("idle");
 	}
 	public override void _PhysicsProcess(double delta)
-	{
-		Vector2 direction = Vector2.Zero;
+{
+    Vector2 direction = Vector2.Zero;
 
-		// Apply gravity if not on the floor
-		if (!IsOnFloor() && !inWater)
-		{
-			Velocity += new Vector2(0, Gravity * (float)delta);
-		}
+    // Apply gravity if not on the floor and not swimming
+    if (!IsOnFloor() && !inWater)
+    {
+        Velocity += new Vector2(0, Gravity * (float)delta);
+    }
 
-		// Handle movement
-		if (Input.IsActionPressed("move_left"))
-		{
-			direction.X -= 1;
-			playerAnimation.Play("walk");
-			playerAnimation.FlipH = true; // Flip sprite when moving left
-		}
-		else if (Input.IsActionPressed("move_right"))
-		{
-			direction.X += 1;
-			playerAnimation.Play("walk");
-			playerAnimation.FlipH = false; // Unflip sprite when moving right
-		}
-		else
-		{
-			// Play idle animation when not moving
-			playerAnimation.Play("idle");
-		}
+    // Handle horizontal movement (left-right)
+    if (Input.IsActionPressed("move_left"))
+    {
+        direction.X -= 1;
+        playerAnimation.Play("walk");
+        playerAnimation.FlipH = true; // Flip sprite when moving left
+    }
+    else if (Input.IsActionPressed("move_right"))
+    {
+        direction.X += 1;
+        playerAnimation.Play("walk");
+        playerAnimation.FlipH = false; // Unflip sprite when moving right
+    }
+    else
+    {
+        playerAnimation.Play("idle");
+    }
 
-		direction = direction.Normalized();
-		Velocity = new Vector2(direction.X * Speed, Velocity.Y);
+    // Swimming vertical movement (up-down)
+    if (inWater)
+    {
+        if (Input.IsActionPressed("move_up"))
+        {
+            direction.Y -= 1;
+            playerAnimation.Play("swim");
+        }
+        else if (Input.IsActionPressed("move_down"))
+        {
+            direction.Y += 1;
+            playerAnimation.Play("swim");
+        }
+        else
+        {
+            direction.Y = 0;
+            playerAnimation.Play("idle");
+        }
+    }
 
-		// Jumping
-		if (Input.IsActionJustPressed("move_up") && IsOnFloor())
-		{
-			Velocity = new Vector2(Velocity.X, -JumpForce);
-		}
+    // Normalize direction vector (same behavior for both axes)
+    direction = direction.Normalized();
 
-		MoveAndSlide();
-	}
+    // Apply velocity based on direction and speed
+    Velocity = new Vector2(direction.X * Speed, direction.Y * Speed / 20 + Velocity.Y);
+
+    // Jumping logic (reset Y velocity when jumping)
+    if (Input.IsActionJustPressed("move_up") && IsOnFloor())
+    {
+        Velocity = new Vector2(Velocity.X, -JumpForce); // Apply jump force
+    }
+
+    MoveAndSlide();
+}
+
 
 
 public void PickUpTool(Tool tool)

@@ -73,6 +73,8 @@ autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-105, -170)
+ignore_rotation = false
 limit_left = 0
 limit_top = 0
 position_smoothing_enabled = true
+position_smoothing_speed = 10.0
