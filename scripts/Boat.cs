@@ -24,7 +24,7 @@ public partial class Boat : Node
 		image = GetNode<Sprite2D>("BoatImage");
 		upgrade_button = GetNode<Button>("Upgrade");
 
-		player = GetNode<Player>("/root/Player");
+		player = GetNode<Player>("/root/Node2D/Player");
 		GD.Print(player);
 		
 		upgrade_button.Pressed += OnButtonPressed;

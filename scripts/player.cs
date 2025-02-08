@@ -13,14 +13,13 @@ public partial class Player : CharacterBody2D
 	private AnimatedSprite2D playerAnimation;
 
 	public override void _Ready()
-	{
-		GetTree().Root.AddChild(this);  // Keep Player in root
-    	SetProcess(true);
+	{	
+			// get hte tools
+		tools = CharacterData.tools;
 
 		playerAnimation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		playerAnimation.Play("idle");
 	}
-
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 direction = Vector2.Zero;
@@ -72,6 +71,9 @@ public void PickUpTool(Tool tool)
 	GD.Print("Player has " + tools.Count + " tools");
 	GD.Print(newT);
 	tool.QueueFree(); // Removes the tool from the scene
+
+	// change character sheet
+	CharacterData.tools = tools;
 }
 
 	private void _on_body_entered(Node body)
