@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cffy7qr0y0mqo"
-path="res://.godot/imported/boat_broken.png-cc318731eb77fae652bc6b0b1fb74113.ctex"
+path="res://.godot/imported/boat_fixed.png-6d9ae7cca437df455229f90a087ade04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/boat equipment/boat_broken.png"
-dest_files=["res://.godot/imported/boat_broken.png-cc318731eb77fae652bc6b0b1fb74113.ctex"]
+source_file="res://sprites/boat equipment/boat_fixed.png"
+dest_files=["res://.godot/imported/boat_fixed.png-6d9ae7cca437df455229f90a087ade04.ctex"]
 
 [params]
 

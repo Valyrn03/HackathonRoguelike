@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bh4w2l41mr1mv"]
+[gd_scene load_steps=43 format=3 uid="uid://bh4w2l41mr1mv"]
 
 [ext_resource type="Texture2D" uid="uid://b54v7twcufy15" path="res://images/sky1.png" id="1_5p7uu"]
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_snsu6"]
@@ -20,9 +20,15 @@
 [ext_resource type="Texture2D" uid="uid://b0ya8hdes21a1" path="res://sprites/crabbot/crabbot_swim3.png" id="11_iykhb"]
 [ext_resource type="Texture2D" uid="uid://dihgugakuahyh" path="res://buttons/graySailButton.png" id="11_mc7yo"]
 [ext_resource type="Texture2D" uid="uid://dtujijmdjfevv" path="res://sprites/boat equipment/boat_hole.png" id="12_fejy8"]
+[ext_resource type="Texture2D" uid="uid://qbp284f7rxat" path="res://sprites/boat equipment/sail_left.PNG" id="12_lnxf7"]
 [ext_resource type="Texture2D" uid="uid://2xj61acive1y" path="res://buttons/sailAwayButton.png" id="12_q2puq"]
 [ext_resource type="Texture2D" uid="uid://cd7scjel5jjf7" path="res://buttons/diveButton.png" id="12_uebc5"]
 [ext_resource type="Texture2D" uid="uid://cgb2ftimw2kt6" path="res://images/upgradeButton.png" id="12_v1n6e"]
+[ext_resource type="Texture2D" uid="uid://yy38hnuh0vs5" path="res://sprites/boat equipment/sail_right.PNG" id="13_5jgud"]
+[ext_resource type="Texture2D" uid="uid://dlcifwtycq8kj" path="res://sprites/boat equipment/motor.PNG" id="15_qorkw"]
+[ext_resource type="Texture2D" uid="uid://dfvfl0xayq3t3" path="res://sprites/boat equipment/propeller1.PNG" id="16_5uog1"]
+[ext_resource type="Texture2D" uid="uid://bo3da8rtrfelq" path="res://sprites/boat equipment/propeller2.PNG" id="17_14hb7"]
+[ext_resource type="Texture2D" uid="uid://hdk2rxua1818" path="res://sprites/boat equipment/propeller3.PNG" id="18_euwfi"]
 [ext_resource type="Texture2D" uid="uid://b6kir7wy0rxhb" path="res://images/night/night1.png" id="23_7b1b2"]
 [ext_resource type="Script" path="res://scripts/DiveButton.cs" id="24_83ahu"]
 [ext_resource type="Texture2D" uid="uid://byhke1twig4cc" path="res://images/night/night2.png" id="24_o7ghy"]
@@ -67,6 +73,23 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7yanq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_5uog1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_14hb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_euwfi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lj36r"]
@@ -159,16 +182,16 @@ offset_right = -1182.23
 offset_bottom = -946.407
 scale = Vector2(3.92441, 3.92441)
 
-[node name="GraySailButton" type="Sprite2D" parent="Boat parent/Sail Away"]
-position = Vector2(106, -71)
-scale = Vector2(0.319995, 0.319995)
-texture = ExtResource("11_mc7yo")
-
-[node name="SailAwayButton" type="Sprite2D" parent="Boat parent/Sail Away"]
+[node name="Sail Away Green" type="Sprite2D" parent="Boat parent/Sail Away"]
 visible = false
 position = Vector2(105, 94)
 scale = Vector2(0.329386, 0.329386)
 texture = ExtResource("12_q2puq")
+
+[node name="Sail Away Grey" type="Sprite2D" parent="Boat parent/Sail Away"]
+position = Vector2(106, -71)
+scale = Vector2(0.319995, 0.319995)
+texture = ExtResource("11_mc7yo")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boat parent"]
 polygon = PackedVector2Array(-915.804, -378.687, -768.966, 73.4189, 768.966, 96.6038, 981.494, -355.502)
@@ -176,12 +199,34 @@ one_way_collision_margin = 0.0
 
 [node name="Mast" type="Sprite2D" parent="Boat parent"]
 visible = false
-position = Vector2(-54.0981, -707.14)
+position = Vector2(-38.6415, -834.657)
 texture = ExtResource("11_2k573")
+
+[node name="SailL" type="Sprite2D" parent="Boat parent"]
+visible = false
+position = Vector2(-173.887, -850.113)
+texture = ExtResource("12_lnxf7")
+
+[node name="SailR" type="Sprite2D" parent="Boat parent"]
+visible = false
+position = Vector2(343.91, -884.891)
+texture = ExtResource("13_5jgud")
 
 [node name="BoatImage" type="Sprite2D" parent="Boat parent"]
 position = Vector2(46.3698, 3.86415)
 texture = ExtResource("12_fejy8")
+
+[node name="Motor" type="Sprite2D" parent="Boat parent"]
+visible = false
+position = Vector2(-761.238, -92.7397)
+texture = ExtResource("15_qorkw")
+
+[node name="Propeller" type="AnimatedSprite2D" parent="Boat parent"]
+visible = false
+position = Vector2(-761.238, 212.528)
+sprite_frames = SubResource("SpriteFrames_7yanq")
+autoplay = "default"
+frame_progress = 0.299982
 
 [node name="Upgrade" type="Button" parent="Boat parent"]
 offset_left = -486.883
@@ -207,7 +252,6 @@ scale = Vector2(0.796178, 0.796178)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dock/Dock Collision"]
 position = Vector2(-145, 202.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_lj36r")
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -225,34 +269,35 @@ scale = Vector2(0.250977, 0.250977)
 sprite_frames = SubResource("SpriteFrames_jbvnq")
 animation = &"swim"
 autoplay = "idle"
+frame_progress = 0.0971487
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
 polygon = PackedVector2Array(114, 341, 379, 340, 372, 239, 275, 179, 200, 177, 109, 244)
 
-[node name="Broken Phone" type="Area2D" parent="."]
+[node name="Propeller" type="Area2D" parent="."]
 modulate = Color(0.663555, 0.296094, 0.925464, 1)
 position = Vector2(785, 518)
 script = ExtResource("8_7w45e")
 
-[node name="BrockenPhone" type="Sprite2D" parent="Broken Phone"]
+[node name="BrockenPhone" type="Sprite2D" parent="Propeller"]
 position = Vector2(-9.53674e-07, 13.0001)
 scale = Vector2(0.208008, 0.208008)
 texture = ExtResource("11_5peg8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Broken Phone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Propeller"]
 shape = SubResource("CapsuleShape2D_oxbeo")
 
-[node name="phone" type="Area2D" parent="."]
+[node name="Motor" type="Area2D" parent="."]
 modulate = Color(0.663555, 0.296094, 0.925464, 1)
 position = Vector2(1135, 531)
 script = ExtResource("8_7w45e")
 
-[node name="BrockenPhone" type="Sprite2D" parent="phone"]
+[node name="BrockenPhone" type="Sprite2D" parent="Motor"]
 position = Vector2(-9, 6.00006)
 scale = Vector2(0.208008, 0.208008)
 texture = ExtResource("11_5peg8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="phone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Motor"]
 shape = SubResource("CapsuleShape2D_oxbeo")
 
 [node name="Leftg Wall" type="StaticBody2D" parent="."]

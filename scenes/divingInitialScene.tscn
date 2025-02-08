@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=4 uid="uid://ck8ceypidusnl"]
+[gd_scene load_steps=20 format=4 uid="uid://ck8ceypidusnl"]
 
+[ext_resource type="Script" path="res://scripts/loadPlayer.cs" id="1_5lc10"]
 [ext_resource type="Texture2D" uid="uid://dwqgugljqqssb" path="res://images/Tile set.png" id="1_j0w1a"]
 [ext_resource type="Script" path="res://scripts/divingMap.cs" id="2_jv2e4"]
 [ext_resource type="Script" path="res://scripts/Player.cs" id="3_1gmgh"]
@@ -12,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://b0ya8hdes21a1" path="res://sprites/crabbot/crabbot_swim3.png" id="10_w77qx"]
 [ext_resource type="Texture2D" uid="uid://cmqtivvpam4gs" path="res://sprites/crabbot/crabbot_walk1.png" id="11_blfty"]
 [ext_resource type="Texture2D" uid="uid://dxo6h5ii37o5j" path="res://sprites/crabbot/crabbot_walk2.png" id="12_qf3r0"]
+[ext_resource type="Script" path="res://scripts/Tool.cs" id="13_egsp4"]
+[ext_resource type="Texture2D" uid="uid://bxncmuvspiotk" path="res://sprites/items/brockenPhone.png" id="14_ymibg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mq2kn"]
 texture = ExtResource("1_j0w1a")
@@ -242,9 +245,15 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ywsnb"]
+radius = 49.0
+height = 200.0
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_5lc10")
 
 [node name="divingMap" type="TileMapLayer" parent="."]
+scale = Vector2(1.8, 1.8)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAACAAEAAAABAAAAAAABAAAAAAACAAEAADACAAAAAAABAAIAAGABAAEAAAAAAAIAAAAAAAEAAAADAAAAAAACAAIAAAAAAAEAAAACAAMAAAABAAEAADABAAMAAAABAAMAAFA=")
 tile_set = SubResource("TileSet_mmgtb")
 script = ExtResource("2_jv2e4")
@@ -267,3 +276,18 @@ autoplay = "idle"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
 polygon = PackedVector2Array(114, 341, 379, 340, 372, 239, 275, 179, 200, 177, 109, 244)
+
+[node name="Phone" type="Area2D" parent="."]
+
+[node name="Motor" type="Area2D" parent="."]
+modulate = Color(0.663555, 0.296094, 0.925464, 1)
+position = Vector2(466, 250)
+script = ExtResource("13_egsp4")
+
+[node name="BrockenPhone" type="Sprite2D" parent="Motor"]
+position = Vector2(-9, 6.00006)
+scale = Vector2(0.208008, 0.208008)
+texture = ExtResource("14_ymibg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Motor"]
+shape = SubResource("CapsuleShape2D_ywsnb")

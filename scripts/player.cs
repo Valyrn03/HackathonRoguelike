@@ -14,6 +14,9 @@ public partial class Player : CharacterBody2D
 
 	public override void _Ready()
 	{
+		GetTree().Root.AddChild(this);  // Keep Player in root
+    	SetProcess(true);
+
 		playerAnimation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		playerAnimation.Play("idle");
 	}

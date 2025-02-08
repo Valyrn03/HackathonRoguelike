@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj8ryyid610o6"]
+
+[ext_resource type="Texture2D" uid="uid://b54v7twcufy15" path="res://images/sky1.png" id="1_t7pmx"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sky1" type="Sprite2D" parent="."]
+position = Vector2(2046.9, 1135.5)
+scale = Vector2(0.412909, 0.412909)
+texture = ExtResource("1_t7pmx")
